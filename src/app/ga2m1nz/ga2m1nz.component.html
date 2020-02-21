@@ -1,0 +1,12 @@
+<div class="admin-container">
+	<h1>ADMIN</h1>
+	<h2>Connected users</h2>
+<div class="no-users-connected" *ngIf="connectedUsers?.length < 1">
+<p>No usrs....</p>
+	</div>
+	<ul class="users-connected" *ngIf="connectedUsers?.length > 0">
+		<li *ngFor="let user of connectedUsers">
+			<ul class="user-details"><li class="user-ID">{{user.uID}}:<button (click)="kickUser(user.uID)">KICK</button></li></ul>
+		</li>
+	</ul>
+</div>

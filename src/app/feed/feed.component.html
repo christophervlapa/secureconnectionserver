@@ -1,0 +1,16 @@
+<div [ngClass]="{'input-active': activeInput}" *ngIf="!kicked">
+<h1>Welcome, {{userID}}.</h1>
+	<ul class="messages">
+		<ng-container *ngFor="let message of liveMessages">
+			<li>
+				<ul><li>{{message.uID}}:</li><li [innerHTML]="message.text"></li></ul>
+			</li>
+		</ng-container>
+	</ul>
+	<div class="message-field half-opacity">
+		<input [(ngModel)]="message" (keypress)="sendMessageOnKeypress($event.keyCode)" [blur]="myFocusTriggeringEventEmitter" (focus)="toggleInputActive(true)" (focusout)="toggleInputActive(false)" id="m" autocomplete="off" maxlength="140" /><button (click)="sendMessage()" [blur]="myFocusTriggeringEventEmitter" id="sendMsg">Send</button>
+	</div>
+</div>
+<div  class="kicked" *ngIf="kicked">
+	<h1>Enough!!</h1>
+</div>

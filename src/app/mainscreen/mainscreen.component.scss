@@ -1,0 +1,158 @@
+.mainscreen-container{
+	width: 100%;
+	display: block;
+}
+
+.mainscreen-feed-container{
+	width: 100%;
+	display: block;
+	padding: 0 25px;
+	margin: 0 auto;
+
+	.top-content{
+		color: #FFDDFF;
+		font-size: 16px;
+		font-family: monospace;
+	}
+
+	.left{
+		float:left;
+		width: 50%;
+
+		.quote{
+			font-family: monospace;
+			font-size: 12px;
+			margin: 0;
+			padding: 0;
+			color: #FFDDDD;
+			p{
+				padding: 0;
+				margin: 0;
+			}
+		}
+	}
+
+	.right{
+		float: left;
+		width: 50%;
+
+		p{
+			font-family: monospace;
+			font-size: 20px;
+			margin: 0 0 10px 0;
+			color: #FFDDDD;
+		}
+		
+	}
+	
+}
+
+.mainscreen-banner{
+	display: block;
+	position: relative;
+	/*border: 1px solid red;*/
+	color: #FFFFFF;
+    margin-left: -70px;
+	// text-align: center;
+	// height: 150px;
+}
+
+:host ::deep ul {
+	/*display: table;*/
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	/*padding-right: 20px;*/
+}
+
+.users-connected {
+	-moz-column-count: 6;
+    -moz-column-gap: 5px;
+    -webkit-column-count: 6;
+    -webkit-column-gap: 5px;
+    column-count: 6;
+    column-gap: 5px;
+};
+
+.users-connected li {
+	/*width: 50%;*/
+	font-size: 14px;
+}
+
+:host ::deep li.user-ID,
+:host ::deep li.user-flags {
+	display: inline;
+	/*width: 50%;*/
+}
+
+:host ::deep li.user-flags {
+	margin-left: 5 	px;
+}
+
+.mainscreen-feed-container{
+	z-index: 1000;
+	position: relative;
+}
+
+.mainscreen-feed{
+	width: 100%;
+	z-index: 100;
+	ul{
+		li{
+			padding: 1px 10px;
+		}
+	}
+}
+
+.mainscreen-users{
+	width: 100%;
+	z-index: 100;
+}
+
+.mainscreen-users,
+.mainscreen-feed {
+	display: block;
+	float: left;
+	color: #FFFFFF;
+	font-family: monospace;
+	font-size: 18px;
+}
+
+.data-bg{
+	background-color: transparent;
+	font-family: monospace;
+	color: #75007a;
+	// color: #2b1818;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index:99;
+
+
+    ul{
+  //   	-moz-column-count: 2;
+		// -moz-column-gap: 2px;
+		// -webkit-column-count: 2;
+		// -webkit-column-gap: 2px;
+		// column-count: 2;
+		// column-gap: 2px;
+    	// width: 90%;
+    	// display: block;
+    	margin: 0 auto;
+    	opacity: 0.7;
+
+    	li{
+    		padding: 0 5px; // @TODO timeout this to random between 1 and 10
+    		// width: 50%;
+    		font-size: 16px;
+			display: inline-block;
+			max-width: 90%;
+/*			line-height: 0.2em;
+*/
+			.data-device{
+				color: #825f84;
+			}
+    	}
+    }
+}

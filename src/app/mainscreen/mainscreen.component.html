@@ -1,0 +1,43 @@
+<div class="data-bg">
+<ul><li *ngFor="let data of dataBg; let i=index">
+	<ul>
+	<!-- {{i}}&nbsp; -->
+		<li>{{data.timestamp * 1000 | date:'H:mm:ss d/M/y'}}</li>
+		<li class="data-device">{{data.device}}</li>
+		<li>{{data.ssid}}</li>
+	</ul>
+</li></ul>
+</div>
+
+<div class="mainscreen-feed-container">
+<div class="top-content" *ngIf="topContent">{{topContent}}</div>
+<div class="left">
+	<div class="mainscreen-banner">
+	<pre [innerHTML]="bannerContent"></pre>
+</div>
+<div class="mainscreen-users">
+		<div class="no-users-connected" *ngIf="usersList?.length < 1">
+			<h2>Connect by joining wifi 'secureconnection', then open a browser and enter http://192.168.1.1</h2>
+		</div>
+		<ul class="users-connected" *ngIf="usersList?.length > 0">
+			<li *ngFor="let user of usersList">
+				<ul class="user-details"><li class="user-ID">{{user.uID}}:</li><li class="user-flags">{{user.flagIDs?.length}}</li></ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="right">
+	<div class="mainscreen-feed">
+		<div class="no-messages" *ngIf="liveMessages?.length < 1">
+			<p>There are no messages yet. Join wifi 'secureconnection' then open a browser and enter http://192.168.1.1</p>
+		</div>
+		<ul class="messages">
+		<ng-container *ngFor="let message of liveMessages; let i=index">
+			<li *ngIf="i<128"><ul><li>{{message.uID}}:</li><li [className]="message.flagClasses" [innerHTML]="message.text"></li></ul></li>
+			</ng-container>
+		</ul>
+		<!-- <ul class="messages" [innerHTML]="liveMessages"></ul> -->
+	</div>
+</div>
+	
+</div>
