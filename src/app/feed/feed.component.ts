@@ -3,22 +3,21 @@ import { Component, OnInit, Output, EventEmitter, NgZone} from '@angular/core';
 import { AppService } from '../app.service';
 
 @Component({
+  // chat-feed
   selector: 'app-feed',
-  providers: [],
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
 
-	message;
-	newFlag;
-  connection;
+	message: string;
+	newFlag: any;
+  connection: any;
   liveMessages: any = [];
 	activeInput: boolean;
-  userID;
+  userID: any;
   kicked: boolean = false;
-  kickedUser;
-  // liveMessages: any = [];
+  kickedUser: any;
 
   constructor(private appService:AppService, public zone: NgZone) { }
 

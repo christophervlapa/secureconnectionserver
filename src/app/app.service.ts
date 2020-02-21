@@ -14,6 +14,8 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 export class AppService {
   private url = 'http://localhost:5000';
   // private url = 'http://192.168.1.1:5000';
+
+  // @TODO look at converting this to @Output()
   private socket;
 
   public messages: any = [];
@@ -37,6 +39,7 @@ export class AppService {
   //                   .catch(this.handleError);
   // }
 
+  // @TODO split these out into appropriate services in /common
   userTimeConnected(connectedTimestamp){
     var rightNow = new Date().getTime();
 
@@ -124,6 +127,7 @@ export class AppService {
         // this.users.push(data);
       });
       return () => {
+        // @TODO probs update to @Output()??
         this.socket.disconnect();
       }; 
     })

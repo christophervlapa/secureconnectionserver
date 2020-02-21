@@ -1,0 +1,6 @@
+TODO
+
+Add IP check to admin user so only one IP has access
+
+Fix that "ghost user" issue of non regisited users having access
+

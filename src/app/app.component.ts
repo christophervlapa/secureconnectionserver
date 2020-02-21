@@ -4,21 +4,18 @@ import { AppService } from './app.service';
 
 @Component({
 	selector: 'app-root',
-	providers: [AppService],
-	templateUrl: './app.component.html',
-	styleUrls: ['./app.component.css']
+	templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
+  private connection: any;
+  private message: string;
+  private liveMessages: string;
+  private activeInput: boolean;
+  private newFlag: any;
 
-  // messages = [];
-  // users = [];
-  connection;
-  message;
-  liveMessages: string;
-  activeInput: boolean;
-  newFlag;
-
-  constructor(private appService:AppService) {}
+  constructor(
+    private appService:AppService  
+  ) {}
 
   ngOnInit() {
     console.log("APP SERVICE init");

@@ -7,8 +7,8 @@ import { Observable } from "rxjs";
 import { TimerObservable } from "rxjs/observable/TimerObservable";
 
 @Component({
+	// mainscreen-component
   selector: 'app-mainscreen',
-  providers: [],
   templateUrl: './mainscreen.component.html',
   styleUrls: ['./mainscreen.component.scss','./flagstyles.scss']
 

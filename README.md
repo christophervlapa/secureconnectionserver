@@ -1,4 +1,4 @@
-# SecureConnectionServer v2.3
+# Secure Connection Server v3.0
 
 This is the updated code from my collaborative artwork with Laura Hunt Secure Connection, that was shown at the Hobart Biennalle in 2017 and at Firstdraft gallery in 2018. 
 
@@ -13,6 +13,7 @@ The original codebase was written in Angular 6, so this has been migrated up to 
 There are some pretty involved instructions to get this to work, as well as specific modules and even specific hardware. I will be updating that once I get into my old laptop that my mother is currently using (:
 
 ## /!\ CURRENTLY THIS CODE WILL NOT WORK /!\
+### ;_;
 
 As there are LOTS of changes and dependencies to be updated, upgraded and fixed as well as hardware testing of NIC dongles to see if they support hosted network, and setup of the logger.
 
