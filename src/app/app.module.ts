@@ -9,7 +9,6 @@ import { FeedComponent } from './feed/feed.component';
 import { Ga2m1nzComponent } from './ga2m1nz/ga2m1nz.component';
 import { BlurDirective } from './blur.directive';
 
-import { HttpModule } from '@angular/http';
 import { ConnectionCounterDirective } from './connection-counter.directive';
 
 const appRoutes: Routes = [

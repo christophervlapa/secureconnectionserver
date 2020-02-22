@@ -5,7 +5,6 @@ import {catchError, tap, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 
 
