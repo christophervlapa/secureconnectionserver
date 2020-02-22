@@ -29,7 +29,6 @@ const appRoutes: Routes = [
 	}
 ];
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,8 +44,7 @@ const appRoutes: Routes = [
 	{enableTracing: false } // <-- debugging purposes only
 	),
     BrowserModule,
-    FormsModule,
-    HttpModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
