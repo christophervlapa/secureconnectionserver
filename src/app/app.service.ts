@@ -3,17 +3,19 @@ import {throwError as observableThrowError,  Subject ,  Observable } from 'rxjs'
 
 import {catchError, tap, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 // import * as io from 'socket.io-client';
 
 import { Http, Response, Headers, RequestOptions } from '@angular/common/http';
 
 
 
+=======
+>>>>>>> 8deed4b6278957a23b7e43b0cd73167840477123
 
 @Injectable()
 export class AppService {
   private url = 'http://localhost:5000';
-  // private url = 'http://192.168.1.1:5000';
 
   // @TODO look at converting this to @Output()
   private socket;
@@ -23,21 +25,9 @@ export class AppService {
   public liveMessages = '';
   private newFlag = '';
 
-  // private allSameCharsRegex = new RegExp('/^(.)\1+$/');
-  // private handleError;
-
   constructor(private http: Http) {
          var obj;
-         // this.getProbez().subscribe(data => obj=data, error => console.log(error));
     }
-
-    // https://stackoverflow.com/questions/39406043/how-to-fetch-json-file-in-angular-2
-
-  // public getProbez(): Observable<any> {
-  //   return this.http.get("./assets/probelog.json")
-  //                   .map((res:any) => res.json())
-  //                   .catch(this.handleError);
-  // }
 
   // @TODO split these out into appropriate services in /common
   userTimeConnected(connectedTimestamp){
@@ -46,8 +36,6 @@ export class AppService {
     return rightNow - connectedTimestamp;
   }
 
-  
-  
   sendMessage(message){
     this.socket.emit('newMessage', message);    
   }
@@ -79,11 +67,7 @@ export class AppService {
     return observable;
   }  
 
-  
-
   processNewMessage(message){
-
-
 
       message['text'] = this.profanityFilter(message['text']);
 
@@ -104,26 +88,14 @@ export class AppService {
       }
 
       this.users.sort((a,b) => {
-        // console.log("A ",a.flagIDs.length);
         return b.flagIDs.length - a.flagIDs.length;
       });
-      // console.log("PROCESS MSG ",message);
-      
-      // this.liveMessages = '<li><ul><li>' + message['uID'] + ':</li><li>' + message['text'] + '</li></ul></li>\n\r' + this.liveMessages;
   }
 
   flagChecker(message){
 
-    // message = message['text'];
-
-
-
-    // console.log(message);
-
-    // FLAG ONE 'hello world'
     if(message['text'].toLowerCase().indexOf('vote yes') > -1) {
       
-      // message['flagIDs'].push('voteYes001');
       message['flagClasses'] = 'voteYes001';
       var chars = message['text'].split("");
       message['text'] = '<span>' + chars.join('</span><span>') + '</span>';  
@@ -158,9 +130,6 @@ export class AppService {
       
       return "006";
 
-    // } else if (this.allSameCharsRegex.test(message['text'])){ // all the same letters
-    //   return "007";
-
     } else if (message['text'].toLowerCase().indexOf('secureconnection') > -1){ // Say secureconnection
       return "007";
 
@@ -175,145 +144,11 @@ export class AppService {
 
   } else if(message['text'].toLowerCase().indexOf('wtf') > -1){
     return "010";
-    // } else if (){ // Coulor change on 'red' or such
 
-    // } else if (){ // Type 'revolution' in msg
-
-    // } else if (){ // use the word 'proximal'
-
-    // } else if (){ // Type 'reboot' main chat is reset to blank screen
-
-    // } else if (){ // Find the word happy replace 64 with HAPPYHAPPYJOYJOYHAPPYHAPPYJOYJOY
-
-    // } else if (){ // names of tasmanian towns
-
-    // } else if (){ // Names of MONA artists
-
-    // } else if (){  // say 'extra'
-
-    // } else if (){ // say 'electric'
-
-    // } else if (){ // Non english msg get flag
-
-
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!
-    // !!!! MULTI USER FLAGS !!!!!
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    // } else if (this.twoInARowCheck(message)){ // Names of MONA artists
-      
-      // console.log("TWO INA ROW CHECK ",this.twoInARowCheck(message));
-      // console.log("TWO IN A ROW");
-      // let user2 = this.users.findIndex(i => i.uID == this.twoInARowCheck(message));
-      // console.log('user2 ',user2);
-      // this.users[user2].flagIDs.push('006');
-      // return "006-"+this.twoInARowCheck(message);
-
-//     } else if(this.xInARowCheck(message,3) != null) { // THREE IN A ROW
-// console.log('THREE IN A ROW ',this.xInARowCheck(message,3).length);
-//       // OTHER USERS FLAGS
-
-//       return "007";
-
-    // Two partypartyparty msg proximal
-
-    // three partypartyparty ||
-
-    // four partypartyparty ||
-
-    // Non proximal posts get flags
-
-    // 
-
-    // 
     } else { // NO FLAGS
       return null;
     }
   }
-
-  // twoInARowCheck(message){
-
-  //   // get the prev message text
-
-  //   let thisItemIndex = this.messages.findIndex(i => i.msgID === message['msgID']);
-  //   let previousItemIndex = thisItemIndex - 1;
-
-
-  //   if(previousItemIndex > -1 && message['text'] == this.messages[previousItemIndex]['text']){
-  //     return message['uID']+"-"+this.messages[previousItemIndex]['uID'];
-  //   }
-    // let previousItem2nd = thisItemIndex - 2;
-    // let previousItem3nd = thisItemIndex - 3;
-    // let previousItem4nd = thisItemIndex - 4;
-    // let previousItem5nd = thisItemIndex - 5;
-
-    // for(var msg of this.messages){
-      
-    // }
-    // if(this.messages.length > 1){
-
-    //   this.messages.forEach((msg, index) => {
-    //     console.log(index);
-    //     if(index > 0 && message['text'] == this.messages[index-1]['text']){ // TWO IN A ROW
-    //       // console.log(msg['text']);
-    //       // console.log(this.messages[index-1]['text']);
-    //       console.log("TWO!!!!");
-    //       return true;
-    //     } else {
-    //       return false;
-    //     }
-    //   });
-    // }
-    
-
-    // console.log("This item text: ",message['text']);
-    // // console.log("Next item text: ",message[nextItemIndex]['text']);
-    // console.log("Prev item text: ",this.messages[previousItemIndex]['text']);
-    // console.log("Prev item 2 text: ",this.messages[previousItem2nd]['text']);
-    // console.log("Prev item 3 text: ",this.messages[previousItem3nd]['text']);
-    // console.log("Prev item 4 text: ",this.messages[previousItem4nd]['text']);
-    // console.log("Prev item 5 text: ",this.messages[previousItem5nd]['text']);
-
-    // console.log("ALL MESSAGES ",this.messages);
-    // // get the next message text
-  // }
-
-//   xInARowCheck(message,x){
-
-//     // get the prev message text
-//     var flagUsers = [];
-
-//     let thisItemIndex = this.messages.findIndex(i => i.msgID === message['msgID']);
-//     // let previousItemIndex = thisItemIndex - 1;
-//     // let previousItem2Index = thisItemIndex - 2;
-//     // let previousItem3Index = thisItemIndex - 3;
-
-//     // loop through previous 3 messages
-
-//     if(thisItemIndex > 0){
-//       for(var i=thisItemIndex; i < x; i++){
-//         var prevIndex = thisItemIndex - i;
-// console.log("PREV INDEX ",prevIndex);
-//         if(message['text'] === this.messages[prevIndex]['text']){
-//           flagUsers.push(this.messages[i]['uID']);
-//         }
-//       }
-//     }
-    
-
-//     if(flagUsers.length === 3){
-//       return flagUsers;
-//     } else {
-//       return null;
-//     }
-    
-
-//     // if(previousItemIndex > -1 && message['text'] == this.messages[previousItemIndex]['text']){
-//     //   return this.messages[previousItemIndex]['uID'];
-//     // }
-    
-//   }
-
 
   // Find swear words and ban em
   profanityFilter(message){

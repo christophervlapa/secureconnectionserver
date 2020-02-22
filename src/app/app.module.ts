@@ -31,10 +31,13 @@ const appRoutes: Routes = [
 	}
 ];
 
+<<<<<<< HEAD
 export const socketIO = new InjectionToken('socketIO');
 
 // let io = window['socketIO'];
 
+=======
+>>>>>>> 8deed4b6278957a23b7e43b0cd73167840477123
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,12 +54,15 @@ export const socketIO = new InjectionToken('socketIO');
 	),
     BrowserModule,
     FormsModule
+<<<<<<< HEAD
   ],
   providers: [
     {
       provide: SIO_TOKEN,
       useValue: io
     }
+=======
+>>>>>>> 8deed4b6278957a23b7e43b0cd73167840477123
   ],
   bootstrap: [AppComponent]
 })
