@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -9,8 +9,9 @@ import { FeedComponent } from './feed/feed.component';
 import { Ga2m1nzComponent } from './ga2m1nz/ga2m1nz.component';
 import { BlurDirective } from './blur.directive';
 
-import { HttpModule } from '@angular/http';
 import { ConnectionCounterDirective } from './connection-counter.directive';
+
+import { SIO_TOKEN } from './common/socket-io.service'
 
 const appRoutes: Routes = [
 	{
@@ -30,6 +31,9 @@ const appRoutes: Routes = [
 	}
 ];
 
+export const socketIO = new InjectionToken('socketIO');
+
+// let io = window['socketIO'];
 
 @NgModule({
   declarations: [
@@ -46,10 +50,14 @@ const appRoutes: Routes = [
 	{enableTracing: false } // <-- debugging purposes only
 	),
     BrowserModule,
-    FormsModule,
-    HttpModule
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: SIO_TOKEN,
+      useValue: io
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

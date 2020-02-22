@@ -23,6 +23,7 @@
     "@angular/router": "^9.0.2",
     "@hapi/cryptiles": "^5.0.0",
     "@hapi/hoek": "^9.0.3",
+    "@types/socket.io-client": "^1.4.32",
     "ajv": "^6.11.0",
     "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
@@ -31,6 +32,7 @@
     "rxjs": "^6.5.4",
     "rxjs-compat": "^6.0.0-rc.0",
     "rxjs-tslint": "^0.1.7",
+    "socket.io-client": "^2.3.0",
     "stringstream": "1.0.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.10.2"
