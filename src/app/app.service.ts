@@ -1,33 +1,31 @@
 
-import {throwError as observableThrowError,  Subject ,  Observable } from 'rxjs';
+import {throwError,  Subject ,  Observable } from 'rxjs';
 
 import {catchError, tap, map} from 'rxjs/operators';
-import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-// import * as io from 'socket.io-client';
+import { Injectable, Inject } from '@angular/core';
+import { SIO_TOKEN } from './common/socket-io.service';
 
-import { Http, Response, Headers, RequestOptions } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-
-
-=======
->>>>>>> 8deed4b6278957a23b7e43b0cd73167840477123
 
 @Injectable()
 export class AppService {
+
+  constructor(
+    @Inject(SIO_TOKEN) public io:any,
+    private http: HttpClient
+  ){}
+  
   private url = 'http://localhost:5000';
 
   // @TODO look at converting this to @Output()
-  private socket;
+  
 
   public messages: any = [];
   public users: any = [];
   public liveMessages = '';
   private newFlag = '';
-
-  constructor(private http: Http) {
-         var obj;
-    }
+  private socket;
 
   // @TODO split these out into appropriate services in /common
   userTimeConnected(connectedTimestamp){
@@ -46,17 +44,15 @@ export class AppService {
       tap(data => {
 
       }), // + JSON.stringify(data)
-      catchError(this.handleError),);
-  }
-
-  handleError(error: Response) {
-    // console.log(error);
-    return observableThrowError(error.json().error || 'Server error');
+      catchError(err => {
+        console.log("Error getting probez: ", err);
+        return throwError(err); 
+      }),);
   }
   
   getMessages() {
     let observable = new Observable(observer => {
-      this.socket = io(this.url);
+      this.socket = this.io(this.url);
       this.socket.on('message', (data) => {
         observer.next(data);   
       });
@@ -70,10 +66,7 @@ export class AppService {
   processNewMessage(message){
 
       message['text'] = this.profanityFilter(message['text']);
-
       this.messages.push(message);
-    // console.log("MSG ",message);
-
       this.newFlag = this.flagChecker(message);
 
       // Send message to flag checker

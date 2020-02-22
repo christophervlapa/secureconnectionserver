@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AppService } from '../app.service';
+import { UserService } from '../common/user.service';
 
 @Component({
   selector: 'app-ga2m1nz',
@@ -14,27 +15,26 @@ export class Ga2m1nzComponent implements OnInit {
 	connectedUsers;
 	kickedUserSub;
 
-  constructor(private appService:AppService) { }
+  constructor(
+	  private appService:AppService,
+	  private userService:UserService
+	) { }
 
   ngOnInit() {
 
-  	// this.connectedUsers = this.appService.users;
-
- 	this.userDisconnect = this.appService.removeUser().subscribe(disconnectedUserSocket => {
+ 	this.userDisconnect = this.userService.removeUser().subscribe(disconnectedUserSocket => {
 			
-		this.appService.reallyRemoveUser(disconnectedUserSocket);
+		this.userService.reallyRemoveUser(disconnectedUserSocket);
 		this.connectedUsers = this.appService.users;
 	})
 
-	this.kickedUserSub = this.appService.getKickedUser().subscribe(kickedUser => {
-		// console.log("GADMIN ",kickedUser);
-		this.appService.reallyRemoveUser(kickedUser);
+	this.kickedUserSub = this.userService.getKickedUser().subscribe(kickedUser => {
+		this.userService.reallyRemoveUser(kickedUser);
 	});
   }
 
   kickUser(uid){
-  	// console.log("ADMIN KICK UID ",uid)
-  	this.appService.kickUser(uid);
+  	this.userService.kickUser(uid);
   }
 
 }

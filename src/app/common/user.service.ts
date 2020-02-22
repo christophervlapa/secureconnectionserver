@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 
-import { SIO_TOKEN } from './socket-io.service'
+import { SIO_TOKEN } from '../common/socket-io.service';
 
 import { GlobalVariables } from '../common/globals';
 
@@ -9,11 +9,13 @@ import { GlobalVariables } from '../common/globals';
 export class UserService {
 
   constructor(
+    @Inject(SIO_TOKEN) public io:any,
     private globals:GlobalVariables,
 
   ){}
 
   public users: any = [];
+  private socket:any;
 
   private subject = new Subject<any>();
 
@@ -57,14 +59,11 @@ export class UserService {
 
   getNewUser() {
       let observable = new Observable(observer => {
-        this.socket = io(this.url);
+        this.socket = this.io(this.globals.constants.nodeServerUrl);
         this.socket.on('newUser', (data) => {
           observer.next(data);   
-          // console.log('SERVICE NEW USER ',data); 
-          // this.users.push(data);
         });
         return () => {
-          // @TODO probs update to @Output()??
           this.socket.disconnect();
         }; 
       })
@@ -74,7 +73,7 @@ export class UserService {
   
     getKickedUser() {
       let observable = new Observable(observer => {
-        this.socket = io(this.url);
+        this.socket = this.io(this.globals.constants.nodeServerUrl);
         this.socket.on('kickedUser', (data) => {
           observer.next(data);
         });

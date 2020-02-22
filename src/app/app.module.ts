@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule, InjectionToken } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MainscreenComponent } from './mainscreen/mainscreen.component';
@@ -31,13 +32,8 @@ const appRoutes: Routes = [
 	}
 ];
 
-<<<<<<< HEAD
-export const socketIO = new InjectionToken('socketIO');
+let socketIO = window['io'];
 
-// let io = window['socketIO'];
-
-=======
->>>>>>> 8deed4b6278957a23b7e43b0cd73167840477123
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,16 +49,14 @@ export const socketIO = new InjectionToken('socketIO');
 	{enableTracing: false } // <-- debugging purposes only
 	),
     BrowserModule,
-    FormsModule
-<<<<<<< HEAD
+	FormsModule,
+	HttpClientModule
   ],
   providers: [
     {
       provide: SIO_TOKEN,
-      useValue: io
+      useValue: socketIO
     }
-=======
->>>>>>> 8deed4b6278957a23b7e43b0cd73167840477123
   ],
   bootstrap: [AppComponent]
 })

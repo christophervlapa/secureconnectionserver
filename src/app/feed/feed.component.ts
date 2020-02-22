@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, NgZone} from '@angular/core';
-// import {EventEmitter} from '@angular/common/src/facade/async';
 import { AppService } from '../app.service';
+import { UserService } from '../common/user.service';
 
 @Component({
   // chat-feed
@@ -19,7 +19,12 @@ export class FeedComponent implements OnInit {
   kicked: boolean = false;
   kickedUser: any;
 
-  constructor(private appService:AppService, public zone: NgZone) { }
+  constructor(
+    private appService:AppService, 
+    public zone: NgZone,
+    public userService:UserService
+    
+    ) { }
 
   public myFocusTriggeringEventEmitter = new EventEmitter<boolean>();
 
@@ -32,11 +37,7 @@ export class FeedComponent implements OnInit {
     }
 
     if(this.message !== "" && !(/^\s*$/.test(this.message))){
-      this.appService.sendMessage(newMessage);
-
-      // TODO check for flags here??
-      // console.log('FEED COMP sendMessage',newMessage);
-      
+      this.appService.sendMessage(newMessage);      
     }
 
       newMessage = null;
@@ -44,15 +45,12 @@ export class FeedComponent implements OnInit {
 
       this.message = '';
       this.myFocusTriggeringEventEmitter.emit(false);
-    
-    // console.log(this.myFocusTriggeringEventEmitter);
   }
 
   sendMessageOnKeypress(keyCode){
     // On enter
     if(keyCode == 13) {
       this.sendMessage();
-      // this.activeInput = false;
     }
   }
 
@@ -61,40 +59,27 @@ export class FeedComponent implements OnInit {
   }
 
   ngOnInit() {
-  	// console.log('FeedComponent init');
-
-    // this.liveMessages = this.appService.messages;
-    // push unique id to array
     let timestamp = new Date().getTime();
     let randoNumber = Math.floor((Math.random() * 10000000000000) + 1);
 
     this.userID = (timestamp + randoNumber).toString(36);     
 
     // ADD USER
-    // console.log("USERS LEN ",this.appService.getUserList().length);
-    this.appService.addUser(this.userID);
+    this.userService.addUser(this.userID);
 
     this.connection = this.appService.getMessages().subscribe(message => {
       
       this.appService.processNewMessage(message);
 
       this.liveMessages = this.appService.messages.sort((a,b) => {
-      // console.log("A ",a.flagIDs.length);
         return b.msgID - a.msgID;
       });
-
-      // this.liveMessages = this.appService.liveMessages;
-
     })
 
-    this.kickedUser = this.appService.getKickedUser().subscribe(kickedUser => {
+    this.kickedUser = this.userService.getKickedUser().subscribe(kickedUser => {
       
-      // console.log("kickedUserkickedUser ",kickedUser);
-      // this.appService.processNewMessage(message);
-      // this.kick
       if(kickedUser['uID'] == this.userID){
         this.kicked = true;
-        // console.log("KIICK ",kickedUser);
       }
 
       let tempMessages = this.appService.messages.filter(function( msgObj ) {
@@ -102,9 +87,6 @@ export class FeedComponent implements OnInit {
       });
 
       this.zone.run(() => this.liveMessages = this.appService.messages = tempMessages);
-
-      // this.liveMessages = this.appService.liveMessages;
-
     })
 
     // console.log("KICKED CLIENT ",this.kickedUser);
