@@ -1,19 +1,19 @@
 // RED
-:host ::deep .red{
+.red{
 	color: #ff0c00;
 }
 
 // BLUE
-:host ::deep .blue{
+.blue{
   color: #5f54ff;
 }
 
-:host ::deep .yellow{
+.yellow{
   color: #f4f442;
 }
 
 // TRUMP / FUMP
-:host ::deep .orange{
+ .orange{
   color: #ff8235;
 }
 
@@ -28,7 +28,7 @@
 
 
 /* VOTE YES FLAG 001 */
-:host ::deep .voteYes001 {
+.voteYes001 {
   /*
    * Animation variables
    */
@@ -72,7 +72,7 @@
   }
 }
 
-:host ::deep .monaFlag {
+.monaFlag {
 
     animation: moflag 1s 0s ease infinite;
     -moz-animation: moflag 1s 0s ease infinite;
@@ -99,8 +99,4 @@
       color: #705C12;
     }
   }
-
-
-
-
 }

@@ -1,4 +1,4 @@
-import { Directive, OnInit, Input, EventEmitter, ElementRef, Inject } from '@angular/core';
+import { Directive, Input, EventEmitter, ElementRef, Inject } from '@angular/core';
 
 @Directive({
 	selector: '[blur]'
@@ -12,10 +12,7 @@ export class BlurDirective {
 
 	ngOnInit(){
 		this.FocusEvent.subscribe(event => {
-			// this.renderer.invokeElementMethod(this.element.nativeElement, 'focus', []);	
 			this.element.nativeElement.blur();
-			// console.log("EVENT ",this.element.nativeElement);
-			// console.log("EVENT ",event);
 		});
 	}
 
