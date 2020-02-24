@@ -13,6 +13,7 @@ import { BlurDirective } from './blur.directive';
 import { AppService } from './app.service'
 import { UserService } from './common/user.service'
 import { GlobalVariables } from './common/globals'
+import { BannerConstants } from './common/banner-constants'
 
 import { ConnectionCounterDirective } from './connection-counter.directive';
 
@@ -63,7 +64,8 @@ let socketIO = window['io'];
 	},
 	AppService,
 	UserService,
-	GlobalVariables
+	GlobalVariables,
+	BannerConstants
   ],
   bootstrap: [AppComponent]
 })

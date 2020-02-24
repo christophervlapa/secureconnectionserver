@@ -29,7 +29,7 @@ export class UserService {
 
   removeUser(){
     let observable = new Observable(observer => {
-      this.socket = this.socket(this.globals.constants.nodeServerUrl);
+      this.socket = this.io(this.globals.constants.nodeServerUrl);
       this.socket.on('disconnectedUser', (data:any) => {
         observer.next(data);   
       });
