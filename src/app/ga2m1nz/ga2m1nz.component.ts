@@ -6,7 +6,7 @@ import { UserService } from '../common/user.service';
 @Component({
   selector: 'app-ga2m1nz',
   templateUrl: './ga2m1nz.component.html',
-  styleUrls: ['./ga2m1nz.component.css']
+  styleUrls: ['./ga2m1nz.component.scss']
 })
 export class Ga2m1nzComponent implements OnInit {
 

@@ -10,6 +10,10 @@ import { FeedComponent } from './feed/feed.component';
 import { Ga2m1nzComponent } from './ga2m1nz/ga2m1nz.component';
 import { BlurDirective } from './blur.directive';
 
+import { AppService } from './app.service'
+import { UserService } from './common/user.service'
+import { GlobalVariables } from './common/globals'
+
 import { ConnectionCounterDirective } from './connection-counter.directive';
 
 import { SIO_TOKEN } from './common/socket-io.service'
@@ -56,7 +60,10 @@ let socketIO = window['io'];
     {
       provide: SIO_TOKEN,
       useValue: socketIO
-    }
+	},
+	AppService,
+	UserService,
+	GlobalVariables
   ],
   bootstrap: [AppComponent]
 })

@@ -5,7 +5,7 @@ import { UserService } from './common/user.service'
 
 @Component({
 	selector: 'app-root',
-	templateUrl: './app.component.html'
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
   private connection: any;

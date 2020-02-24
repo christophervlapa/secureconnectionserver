@@ -50,17 +50,18 @@ export class MainscreenComponent implements OnInit {
 
 		this.bannerRotation();
 
-		TimerObservable.create(0, this.interval)
-		      .subscribe(() => {
-		        this.appService.getProbez()
-		          .subscribe((probez: any) => {
+		// @TODO need to get this working 
+		// TimerObservable.create(0, this.interval)
+		//       .subscribe(() => {
+		//         this.appService.getProbez()
+		//           .subscribe((probez: any) => {
 		        
-		            var tempDataBg = probez.sort((a:any,b:any) => {
-						return b.timestamp - a.timestamp;
-					});
-					this.zone.run(() => this.dataBg = tempDataBg);
-		          });
-		      });
+		//             var tempDataBg = probez.sort((a:any,b:any) => {
+		// 				return b.timestamp - a.timestamp;
+		// 			});
+		// 			this.zone.run(() => this.dataBg = tempDataBg);
+		//           });
+		//       });
 
 		// @TODO check messages obj isn't empty then loop through
 		// filling screen with previous

@@ -24,7 +24,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/socket.io-client/dist/socket.io.js"
@@ -121,6 +121,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "secure-server"
+    }
+  },
+  "defaultProject": "secure-server",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
