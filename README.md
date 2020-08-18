@@ -4,7 +4,7 @@ This is the updated code from my collaborative artwork Secure Connection made wi
 
 http://www.christophervlapa.com.au/#/works/secureconnection
 
-At it's core this is a chat application that allows mobile phones to anonymously connect and send messages to a a main screen (say, a projector) and to other devices, this is done through a Express server. There is also an element that collects probe requests from devices within range of the Alpha wifi dongle and displays them on the screen, highlighting devices connected to the chat server. Crazy.
+At it's core this is a chat application that allows mobile phones to anonymously connect and send messages to a a main screen (say, a projector) and to other devices, this is done through a ExpressJS server with live chat requests sent through SocketIO. There is also an element that collects probe requests from devices within range of the Alpha wifi dongle using Python 2.x and displays them on the screen, highlighting devices connected to the chat server. Crazy.
 
 The original codebase was written in Angular 6, so this has been migrated up to Angular 9. Incremental upgrades are needed for such a jump, along with depenency updates, and code changes.
 
@@ -12,12 +12,13 @@ The original codebase was written in Angular 6, so this has been migrated up to 
 
 There are some pretty involved instructions to get this to work, as well as specific modules and even specific hardware. I will be updating that once I get into my old laptop that my mother is currently using (:
 
-## /!\ CURRENTLY THIS CODE WILL NOT WORK /!\
-### ;_;
+## /!\ Project is being updated for 2020 /!\
 
-As there are LOTS of changes and dependencies to be updated, upgraded and fixed as well as hardware testing of NIC dongles to see if they support hosted network, and setup of the logger.
+The main issue is my only Alpha wifi dongle is not compatible with Mac _at all_ so this project is being ported to Raspberry PI right now.
 
-This section will be removed once it is working and all dependencies are met, so stay tuned!
+As there are LOTS of changes and dependencies to be updated, upgraded and fixed as well as hardware testing of NIC dongles to see if they support hosted network, as well as probe requests.
+
+The code is still representative of the outcome, but needs future-proofing.
 
 ---
 
