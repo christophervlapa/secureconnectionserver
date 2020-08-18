@@ -37,15 +37,6 @@ io.on('connection', (socket) => {
 
 	socket.on('connectUser', (user) => {
 
-		// // push unique id to array
-		// let timestamp = new Date().getTime();
-		// let randoNumber = Math.floor((Math.random() * 10000000000000) + 1);
-
-		// let uid = (timestamp + randoNumber).toString(36);
-		// uid = 'foo';
-
-		// console.log("YUD ",user);
-
 		if(user !== null){
 
 			allClients.push(socket);
@@ -79,17 +70,10 @@ io.on('connection', (socket) => {
 		// DISCONNECT USER
 		console.log("SERVER KICK ",user);
 		console.log("allClients ",allClients);
-		// let userSocket = user['socketID'];
 		io.emit('kickedUser', user);
-		// socket.disconnect();
 		if (io.sockets.connected[user['socketID']]) {
 		    io.sockets.connected[user['socketID']].disconnect();
 		}
-		// socket.manager.onClientDisconnect(user['socketID']);
-		// socket.clients[user['socketID']].connection.end();
-
-
-		
 	});
 
 });
